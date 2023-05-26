@@ -86,7 +86,7 @@ export default function Home({ combinedData }: any) {
 
 export async function getStaticProps() {
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "API KEY",
   });
   const openai = new OpenAIApi(configuration);
   let recentMatch = await fetch(
@@ -95,7 +95,7 @@ export async function getStaticProps() {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": "7ffc689afa01e1ebdd1d50cca515bd21",
+        "x-rapidapi-key": "API KEY",
       },
     }
   ).then((response) => response.json());
@@ -112,7 +112,7 @@ export async function getStaticProps() {
         method: "GET",
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": "7ffc689afa01e1ebdd1d50cca515bd21",
+          "x-rapidapi-key": "API KEY",
         },
       }
     ).then((response) => response.json());
