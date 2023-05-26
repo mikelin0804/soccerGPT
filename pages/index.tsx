@@ -85,9 +85,11 @@ export default function Home({ combinedData }: any) {
 }
 
 export async function getStaticProps() {
+  let futballtAPI = process.env.FUT_API!;
   const configuration = new Configuration({
-    apiKey: "API KEY",
+    apiKey: process.env.OPENAI_API,
   });
+
   const openai = new OpenAIApi(configuration);
   let recentMatch = await fetch(
     "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=10",
@@ -95,7 +97,7 @@ export async function getStaticProps() {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": "API KEY",
+        "x-rapidapi-key": futballtAPI
       },
     }
   ).then((response) => response.json());
@@ -112,7 +114,7 @@ export async function getStaticProps() {
         method: "GET",
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": "API KEY",
+          "x-rapidapi-key": futballtAPI,
         },
       }
     ).then((response) => response.json());
