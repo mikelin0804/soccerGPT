@@ -101,6 +101,12 @@ export async function getStaticProps() {
       },
     }
   ).then((response) => response.json());
+  if (!recentMatch.ok) {
+    // This will activate the closest `error.js` Error Boundary
+  
+    console.log("recentMatch Fail");
+  }
+  
   recentMatch = recentMatch.response;
 
   const YAML = require("yaml");
@@ -118,6 +124,11 @@ export async function getStaticProps() {
         },
       }
     ).then((response) => response.json());
+    if (!matchDetail.ok) {
+      // This will activate the closest `error.js` Error Boundary
+    
+      console.log("matchDetail Fail");
+    }
     matchDetail = matchDetail.response;
     const doc = new YAML.Document();
     doc.contents = matchDetail;
