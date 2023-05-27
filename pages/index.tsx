@@ -100,7 +100,9 @@ export async function getStaticProps() {
         "x-rapidapi-key": futballtAPI
       },
     }
-  ).then((response) => response.json());
+  ).then((response) => response.json()).catch(err => {
+    console.log(err);
+  });;
   if (!recentMatch.ok) {
     // This will activate the closest `error.js` Error Boundary
   
@@ -123,11 +125,13 @@ export async function getStaticProps() {
           "x-rapidapi-key": futballtAPI,
         },
       }
-    ).then((response) => response.json());
+    ).then((response) => response.json()).catch(err => {
+      console.log(err);
+    });;
     if (!matchDetail.ok) {
       // This will activate the closest `error.js` Error Boundary
     
-      console.log("matchDetail Fail");
+      console.log("recentMatch Fail");
     }
     matchDetail = matchDetail.response;
     const doc = new YAML.Document();
