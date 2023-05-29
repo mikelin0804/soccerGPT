@@ -2,7 +2,7 @@
 This is a [Next.js](https://nextjs.org/) project that will automatically gather latest soccer match information and generate quick summary of the match with ChatGPT.
 
 ## Demo
-![](https://github.com/mikelin0804/soccerGPT/tree/main/public/soccergpt_demo.gif)
+![](https://github.com/mikelin0804/soccerGPT/blob/main/public/soccergpt_demo.gif)
 
 
 
