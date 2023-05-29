@@ -87,7 +87,7 @@ export default function Home({ combinedData }: any) {
 export async function getStaticProps() {
   let futballtAPI = process.env.FUT_API!;
   const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.OPENAI_API,
   });
 
   const openai = new OpenAIApi(configuration);
@@ -97,7 +97,7 @@ export async function getStaticProps() {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": "7ffc689afa01e1ebdd1d50cca515bd21",
+        "x-rapidapi-key": futballtAPI,
       },
     }
   )
