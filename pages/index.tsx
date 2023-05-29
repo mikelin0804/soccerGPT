@@ -87,28 +87,32 @@ export default function Home({ combinedData }: any) {
 export async function getStaticProps() {
   let futballtAPI = process.env.FUT_API!;
   const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API,
+    apiKey: "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",
   });
 
   const openai = new OpenAIApi(configuration);
   let recentMatch = await fetch(
-    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=10",
+    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=3",
     {
       method: "GET",
       headers: {
         "x-rapidapi-host": "v3.football.api-sports.io",
-        "x-rapidapi-key": futballtAPI
+        "x-rapidapi-key": "7ffc689afa01e1ebdd1d50cca515bd21",
       },
     }
-  ).then((response) => response.json()).catch(err => {
-    console.log(err);
-  });;
-  if (!recentMatch.ok) {
-    // This will activate the closest `error.js` Error Boundary
-  
-    console.log("recentMatch Fail");
-  }
-  
+  )
+    .then(function (response) {
+      if (!response.ok) {
+        console.log(response.statusText);
+        throw Error(response.statusText);
+      }
+      return response;
+    })
+    .then((response) => response.json())
+    .catch(function (error) {
+      console.log(error);
+    });
+
   recentMatch = recentMatch.response;
 
   const YAML = require("yaml");
@@ -125,14 +129,18 @@ export async function getStaticProps() {
           "x-rapidapi-key": futballtAPI,
         },
       }
-    ).then((response) => response.json()).catch(err => {
-      console.log(err);
-    });;
-    if (!matchDetail.ok) {
-      // This will activate the closest `error.js` Error Boundary
-    
-      console.log("recentMatch Fail");
-    }
+    )
+      .then(function (response) {
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .catch(function (error) {
+        console.log(error);
+      });
+
     matchDetail = matchDetail.response;
     const doc = new YAML.Document();
     doc.contents = matchDetail;
@@ -168,6 +176,6 @@ export async function getStaticProps() {
     props: {
       combinedData,
     },
-    revalidate: 86400,
+    revalidate: 21600,
   };
 }
