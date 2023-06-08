@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { setTimeout } from "timers/promises";
 
 import Head from "next/head";
 import { Configuration, OpenAIApi } from "openai";
@@ -92,7 +93,7 @@ export async function getStaticProps() {
 
   const openai = new OpenAIApi(configuration);
   let recentMatch = await fetch(
-    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=8",
+    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=6",
     {
       method: "GET",
       headers: {
@@ -160,7 +161,9 @@ export async function getStaticProps() {
       .then((res) => {
         gptResponse = res.data.choices[0].message?.content;
       });
-
+      await setTimeout(5000);
+      console.log("Detail Fetched")
+    
     return gptResponse;
   });
 
