@@ -51,6 +51,24 @@ body {
 	box-shadow: 0 0 2px 0 rgba(#303030, 0.1), 0 4px 4px 0 rgba(#303030, 0.1);
 }
 
+@media (max-width: 800px) {
+	
+.container{
+	min-width: 100%;
+  }
+	.match {
+		background-color: var(--color-bg-primary);
+		display: flex;
+		flex-direction: column;
+		min-width: 90%;
+		border-radius: 10px;
+		box-shadow: 0 0 2px 0 rgba(#303030, 0.1), 0 4px 4px 0 rgba(#303030, 0.1);
+	}
+	.team-name{
+		padding-top: 10%;
+	}
+  }
+
 .match-content {
 	display: flex;
 	position: relative;
