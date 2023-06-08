@@ -92,7 +92,7 @@ export async function getStaticProps() {
 
   const openai = new OpenAIApi(configuration);
   let recentMatch = await fetch(
-    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=3",
+    "https://v3.football.api-sports.io/fixtures?season=2022&league=39&last=8",
     {
       method: "GET",
       headers: {
@@ -176,6 +176,6 @@ export async function getStaticProps() {
     props: {
       combinedData,
     },
-    revalidate: 21600,
+    revalidate: 86400,
   };
 }
